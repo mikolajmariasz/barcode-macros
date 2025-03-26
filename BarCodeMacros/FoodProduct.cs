@@ -12,5 +12,13 @@ namespace BarCodeMacros
         public required string Code { get; set; } // PLU code
         public required string Name { get; set; }
         public required Nutriments NutritionPer100g { get; set; }
+
+        public override string ToString()
+        {
+            return
+                $"Product: {Name}\n" +
+                $"Code: {Code}\n" +
+                $"Nutrition per 100 g:\n{NutritionPer100g}";
+        }
     }
 }

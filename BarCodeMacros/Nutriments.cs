@@ -20,12 +20,12 @@ namespace BarCodeMacros
         {
             return new Nutriments
             {
-                EnergyKcal = this.EnergyKcal * 100 / weightInGrams,
-                Proteins = this.Proteins * 100 / weightInGrams,
-                Carbohydrates = this.Carbohydrates * 100 / weightInGrams,
-                Fat = this.Fat * 100 / weightInGrams,
-                Fiber = this.Fiber * 100 / weightInGrams,
-                Salt = this.Salt * 100 / weightInGrams
+                EnergyKcal = this.EnergyKcal * weightInGrams / 100,
+                Proteins = this.Proteins * weightInGrams / 100,
+                Carbohydrates = this.Carbohydrates * weightInGrams / 100,
+                Fat = this.Fat * weightInGrams / 100,
+                Fiber = this.Fiber * weightInGrams / 100,
+                Salt = this.Salt * weightInGrams / 100
             };
         }
 
@@ -44,13 +44,14 @@ namespace BarCodeMacros
 
         public override string ToString()
         {
+            string FormatValue(float? value) => value.HasValue ? value.Value.ToString("0.##") : "N/A";
             return
-                $"Energy: {EnergyKcal}\n" +
-                $"Proteins: {Proteins}\n" +
-                $"Carbohydrates: {Carbohydrates}\n" +
-                $"Fat: {Fat}\n" +
-                $"Fiber: {Fiber}\n" +
-                $"Salt: {Salt}\n";
+                $"Energy: {FormatValue(EnergyKcal)}\n" +
+                $"Proteins: {FormatValue(Proteins)}\n" +
+                $"Carbohydrates: {FormatValue(Carbohydrates)}\n" +
+                $"Fat: {FormatValue(Fat)}\n" +
+                $"Fiber: {FormatValue(Fiber)}\n" +
+                $"Salt: {FormatValue(Salt)}\n";
 
         }
     }
