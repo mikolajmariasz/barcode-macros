@@ -16,6 +16,7 @@ namespace BarCodeMacros
                 var response = await _httpClient.GetStringAsync($"https://world.openfoodfacts.org/api/v2/product/{pluCode}.json");
                 var jsonDoc = JsonDocument.Parse(response);
                 if (!jsonDoc.RootElement.TryGetProperty("product", out var productElement)) return null; // checks if there is property 'product' in the response
+                //Console.Write(response);
                 var product = new FoodProduct {
                     Code = pluCode,
                     Name = productElement.GetProperty("product_name").GetString() ?? "Unknown",

@@ -9,7 +9,7 @@ namespace BarCodeMacros
     class FoodProduct
     {
         public int Id { get; set; }
-        public required string Code { get; set; } // PLU code
+        public required string Code { get; set; }
         public required string Name { get; set; }
         public required Nutriments NutritionPer100g { get; set; }
 
