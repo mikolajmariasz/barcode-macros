@@ -4,10 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("BarCodeMacrosUI")]
+
 
 namespace BarCodeMacros
 {
-    internal class MealsContext : DbContext
+    public class MealsContext : DbContext
     {
         public DbSet<Meal> Meals { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }

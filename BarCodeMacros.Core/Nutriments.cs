@@ -5,9 +5,12 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+[assembly: InternalsVisibleTo("BarCodeMacrosUI")]
+
+
 namespace BarCodeMacros
 {
-    class Nutriments
+    public class Nutriments
     {
         public float? EnergyKcal { get; set; }    
         public float? Proteins { get; set; }     

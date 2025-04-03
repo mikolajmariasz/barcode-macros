@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+[assembly: InternalsVisibleTo("BarCodeMacrosUI")]
+
+
 namespace BarCodeMacros
 {
-    class FoodProduct
+    public class FoodProduct
     {
         public int Id { get; set; }
         public required string Code { get; set; }

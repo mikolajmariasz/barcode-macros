@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+[assembly: InternalsVisibleTo("BarCodeMacrosUI")]
+
 namespace BarCodeMacros
 {
-    class APIService
+    public class APIService
     {
         private readonly HttpClient _httpClient = new HttpClient();
         public async Task<FoodProduct?> GetProductByPLUCode(string pluCode) {

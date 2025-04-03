@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BarCodeMacrosUI.AddMealPage"
+             Title="Add new meal">
+
+    <ScrollView>
+        <StackLayout Margin="20" Spacing="15">
+            <Entry x:Name="MealNameEntry"
+                   Placeholder="Nazwa posiłku"/>
+
+            <Frame Padding="10">
+                <StackLayout Spacing="10">
+                    <Label Text="Ingridients:" 
+                           FontAttributes="Bold"/>
+
+                    <Entry x:Name="PluCodeEntry"
+                           Placeholder="PLU code"
+                           Keyboard="Numeric"/>
+
+                    <Entry x:Name="WeightEntry"
+                           Placeholder="Weight (g)"
+                           Keyboard="Numeric"/>
+
+                    <Button x:Name="AddIngredientButton"
+                            Text="Add ingridient" 
+                            Clicked="OnAddIngredientClicked"/>
+                </StackLayout>
+            </Frame>
+
+            <Label Text="Added ingridients:" 
+                   FontAttributes="Bold"/>
+
+            <CollectionView x:Name="IngredientsCollection"
+                            HeightRequest="150">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding DisplayText}"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Button x:Name="BackButton"
+                        Text="Back"
+                        Grid.Column="0"
+                        Clicked="OnBackButtonClicked"/>
+
+                <Button x:Name="SaveMealButton"
+                        Text="Save meal"
+                        Grid.Column="1"
+                        Clicked="OnSaveMealClicked"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
