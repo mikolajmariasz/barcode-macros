@@ -24,7 +24,7 @@
   - Storage using Entity Framework Core
   - Relationship between meals and ingredients
 
-### API Integration Details:
+### API Integration Details
 The application integrates with the Open Food Facts API to retrieve product information. This functionality is implemented in the `APIService` class.
 - **PLU Code Lookup**: Fetches product data using PLU codes
 - **Nutritional Data Parsing**: Extracts nutritional information
