@@ -51,7 +51,7 @@ namespace BarCodeMacros
             return
                 $"Energy: {FormatValue(EnergyKcal)}\n" +
                 $"Proteins: {FormatValue(Proteins)}\n" +
-                $"Carbohydrates: {FormatValue(Carbohydrates)}\n" +
+                $"Carbs: {FormatValue(Carbohydrates)}\n" +
                 $"Fat: {FormatValue(Fat)}\n" +
                 $"Fiber: {FormatValue(Fiber)}\n" +
                 $"Salt: {FormatValue(Salt)}\n";

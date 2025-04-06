@@ -1,18 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BarCodeMacrosUI.AddMealPage"
-             Title="Add new meal">
+             x:Class="BarCodeMacrosUI.AddMealPage">
 
     <ScrollView>
         <StackLayout Margin="20" Spacing="15">
-            <Entry x:Name="MealNameEntry"
-                   Placeholder="Nazwa posiłku"/>
+            <Frame Padding="10">
+                <Entry x:Name="MealNameEntry"
+                   Placeholder="Meal Name"/>
+            </Frame>
 
             <Frame Padding="10">
                 <StackLayout Spacing="10">
-                    <Label Text="Ingridients:" 
-                           FontAttributes="Bold"/>
 
                     <Entry x:Name="PluCodeEntry"
                            Placeholder="PLU code"
@@ -27,11 +26,11 @@
                             Clicked="OnAddIngredientClicked"/>
                 </StackLayout>
             </Frame>
+            <Frame>
+                <Label Text="Ingredients:" 
+                           FontAttributes="Bold"/>
 
-            <Label Text="Added ingridients:" 
-                   FontAttributes="Bold"/>
-
-            <CollectionView x:Name="IngredientsCollection"
+                <CollectionView x:Name="IngredientsCollection"
                             HeightRequest="150">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -39,7 +38,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
+            </Frame>
             <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
                 <Button x:Name="BackButton"
                         Text="Back"

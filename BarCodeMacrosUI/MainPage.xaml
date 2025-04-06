@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BarCodeMacrosUI.MainPage">
+             x:Class="BarCodeMacrosUI.MainPage"
+             xmlns:local="clr-namespace:BarCodeMacrosUI">
 
-    <StackLayout Margin="20" Spacing="0">
+    <StackLayout Margin="5" Spacing="0">
         <Button Text="Add new meal" 
                 Clicked="OnAddMealClicked"
-                HorizontalOptions="End"
+                HorizontalOptions="Fill"
                 Margin="0,0,0,10"/>
-
+        
         <RefreshView IsRefreshing="{Binding IsRefreshing}"
                      Command="{Binding RefreshCommand}"
                      Margin="0,10,0,0">
@@ -41,6 +42,12 @@
                                        FontAttributes="Bold"
                                        Margin="0,10,0,0"/>
                                 <Label Text="{Binding TotalNutrition}"/>
+
+                                <Button Text="Delete Meal" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=DeleteMealCommand}"
+                                        CommandParameter="{Binding .}"
+                                        HorizontalOptions="Fill"
+                                        Margin="0,10,0,0"/>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>

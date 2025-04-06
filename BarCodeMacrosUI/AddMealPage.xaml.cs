@@ -22,20 +22,20 @@ namespace BarCodeMacrosUI
             if (string.IsNullOrWhiteSpace(PluCodeEntry.Text) ||
                 string.IsNullOrWhiteSpace(WeightEntry.Text))
             {
-                await DisplayAlert("Błąd", "Wprowadź kod PLU i wagę", "OK");
+                await DisplayAlert("Error", "Enter PLU code and weight", "OK");
                 return;
             }
 
             if (!int.TryParse(WeightEntry.Text, out var weight))
             {
-                await DisplayAlert("Błąd", "Nieprawidłowa waga", "OK");
+                await DisplayAlert("Error", "Invalid weight", "OK");
                 return;
             }
 
             var product = await _api.GetProductByPLUCode(PluCodeEntry.Text);
             if (product == null)
             {
-                await DisplayAlert("Błąd", "Nie znaleziono produktu", "OK");
+                await DisplayAlert("Error", "Product was not found", "OK");
                 return;
             }
 
@@ -57,13 +57,13 @@ namespace BarCodeMacrosUI
         {
             if (string.IsNullOrWhiteSpace(MealNameEntry.Text))
             {
-                await DisplayAlert("Błąd", "Wprowadź nazwę posiłku", "OK");
+                await DisplayAlert("Error", "Enter name of the meal", "OK");
                 return;
             }
 
             if (_ingredients.Count == 0)
             {
-                await DisplayAlert("Błąd", "Dodaj przynajmniej jeden składnik", "OK");
+                await DisplayAlert("Error", "Add at least one ingredient", "OK");
                 return;
             }
 
@@ -76,7 +76,7 @@ namespace BarCodeMacrosUI
             _db.Meals.Add(meal);
             await _db.SaveChangesAsync();
 
-            await DisplayAlert("Sukces", "Posiłek został zapisany", "OK");
+            await DisplayAlert("Success", "Meal was saved", "OK");
             await Navigation.PopAsync();
         }
 

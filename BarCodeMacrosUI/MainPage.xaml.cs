@@ -1,4 +1,5 @@
-﻿using BarCodeMacros;
+﻿using System.Windows.Input;
+using BarCodeMacros;
 using Microsoft.EntityFrameworkCore;
 
 namespace BarCodeMacrosUI
@@ -6,11 +7,30 @@ namespace BarCodeMacrosUI
     public partial class MainPage : ContentPage
     {
         private MealsContext _db;
+        public ICommand DeleteMealCommand { get; }
 
         public MainPage()
         {
             InitializeComponent();
             _db = new MealsContext();
+
+            DeleteMealCommand = new Command<Meal>(async (meal) =>
+            {
+                bool result = await DisplayAlert(
+                    "Delete meal?",
+                    $"Are you sure you want to delete meal '{meal.MealName}'?",
+                    "Yes",
+                    "No"
+                );
+
+                if (result)
+                {
+                    _db.Meals.Remove(meal);
+                    await _db.SaveChangesAsync();
+                    LoadMeals();
+                }
+            });
+
             LoadMeals();
         }
 
@@ -45,9 +65,6 @@ namespace BarCodeMacrosUI
         public MealsViewModel(List<Meal> meals)
         {
             Meals = meals;
-            RefreshCommand = new Command(() => {
-                IsRefreshing = false;
-            });
         }
     }
 }
